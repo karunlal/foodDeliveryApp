@@ -9,7 +9,7 @@ const RestaurantMenu = () => {
   const { resid } = useParams()
   const resInfo = useRestaurantMenu(resid)
   console.log('resid:', resid)
-  const [showIndex, setShowIndex] = useState(0)
+  const [showIndex, setShowIndex] = useState('null')
 
   if (
     !resInfo ||
@@ -55,7 +55,9 @@ const RestaurantMenu = () => {
           key={category?.card?.card.title}
           data={category?.card?.card}
           showItems={index === showIndex ? true : false}
-          setShowIndex={() => setShowIndex(index)}
+          setShowIndex={() =>
+            setShowIndex(index === showIndex ? 'null' : index)
+          }
         />
       ))}
     </div>

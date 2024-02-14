@@ -78,9 +78,14 @@ const Body = () => {
             className="px-4 py-2  bg-gray-200 m-4 rounded-lg"
             onClick={() => {
               const filteredList = listOfRestaurants.filter(
-                (res) => res.info.avgRating > 4.4
+                (res) => res.info.avgRating >= 4.5
               )
-              setListOfRestaurants(filteredList)
+              setFilteredRestaurant(filteredList)
+              {
+                console.log('Clicked')
+                console.log(listOfRestaurants)
+                console.log(filteredRestaurant)
+              }
             }}
           >
             Top Rated Restaurants
@@ -92,12 +97,12 @@ const Body = () => {
           <div key={Restaurants.info.id}>
             <Link to={'/restaurant/' + Restaurants.info.id}>
               {/* if the restaurant is greater than 4.3 rating it is StartRated*/}
-
-              {Restaurants.info.avgRating > 4.3 ? (
+              <RestaurantCard resData={Restaurants} />
+              {/* {Restaurants.info.avgRating > 4.3 ? (
                 <RestaurantCardStared resData={Restaurants} />
               ) : (
                 <RestaurantCard resData={Restaurants} />
-              )}
+              )} */}
             </Link>
           </div>
         ))}
